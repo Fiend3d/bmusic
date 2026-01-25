@@ -1,4 +1,3 @@
-import yt_dlp
 import sys
 import subprocess
 import argparse
@@ -16,6 +15,8 @@ def update_package(pkg):
 
 
 def download_song(url: str):
+    import yt_dlp
+
     ydl_opts = {
         'format': 'bestaudio/best',
         'postprocessors': [{
@@ -37,7 +38,6 @@ def download_song(url: str):
             title = info.get("title")
             webpage_url = info.get("webpage_url", url)
             line = f"{webpage_url} - {title}\n"
-            print(f"line = {line}")
             cwd = os.getcwd()
             links = f"{cwd}\\links.txt"
             content = ""
